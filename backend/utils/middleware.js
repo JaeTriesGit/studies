@@ -19,6 +19,12 @@ const ErrorHandler = (error, req, res, next) => {
         return res.status(400).json({error:'Malformed ID'})
     } else if (error.name==='ValidationError'){
         return res.status(400).json({error:error.msg})
+    } else if (error.name==='JsonWebTokenError'){
+        return res.status(400).json({error:'Token missing / invalid'})
+    } else if (error.name==='TokenExpiredError') {
+        return res.status(401).json({
+            error:'Token Expired'
+        })
     }
     next(error)
 }

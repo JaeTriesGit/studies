@@ -1,5 +1,14 @@
 const Router = require('express').Router()
 const Note = require('../models/Note')
+const JWT = require('jsonwebtoken')
+const User = require('../models/User')
+
+const GetToken = req => {
+    const Authorize = req.get('authorization')
+    if (Authorize && Authorize.startsWith('Bearer ')) {
+        return Authorize.replcae('Bearer ', '')
+    }
+}
 
 //GET ALL NOTES
 Router.get('/', async (req,res) => {
@@ -20,8 +29,18 @@ Router.get('/:_id', (req,res, next) => {
 })
 
 //POST A NOTE
-Router.post('/', (req,res, next)=>{
+Router.post('/', async (req,res)=>{
     const Body = req.body
+
+    const Decoded = JWT.verify(GetToken(req), process.env.SECRET)
+
+    if (!Decoded.id) {
+        return res.status(401).json({
+            error:'Invalid Token'
+        })
+    }
+
+    const user = await User.findById(Decoded.id)
 
     if (!Body.content) {
         return res.status(400).json({
@@ -32,12 +51,14 @@ Router.post('/', (req,res, next)=>{
     const note = new Note({
         id:Body.id,
         content:Body.content,
-        important:Body.important || false
+        important:Body.important || false,
+        user: user._id
     })
 
-    note.save().then(savedNote => {
-        res.json(savedNote)
-    }).catch(er=>next(er))
+    const Saved = await note.save()
+    user.notes = user.notes.concat(Saved._id)
+    await user.save()
+    res.json(Saved)
 })
 
 //DELETE A NOTE
