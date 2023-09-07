@@ -1,8 +1,8 @@
 import axios from 'axios'
 const PORT = 5175
-const baseUrl = 'http://localhost:'+PORT+'/api/notes'
+const baseUrl = 'http://localhost:'+PORT+'/api/people'
 
-async function GetNotes() {
+async function GetPeople() {
     const Req = axios.get(baseUrl)
     return Req.then(res=>res.data)
 }
@@ -18,7 +18,7 @@ async function Create(obj) {
 }
 
 async function Update(id, obj) {
-    const Req = axios.patch(baseUrl+'/'+id, obj)
+    const Req = axios.put(baseUrl+'/'+id, obj)
     return Req.then(res=>res.data)
 }
 
@@ -28,7 +28,7 @@ async function Del(id) {
 }
 
 export default{
-    GetNotes,
+    GetPeople,
     GetNum,
     Create,
     Update,

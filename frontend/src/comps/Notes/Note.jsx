@@ -4,7 +4,7 @@ function Note({note, toggleImportance, Delete}){
         <div className='BG'>
             <button className='Important' onClick={toggleImportance}>{tx}</button>
             <button className='Del' onClick={Delete}>Delete Note</button>
-            <h1><span>Name:</span> {note.name} <span>Phone:</span> {note.number}</h1>
+            <h1>{note.content}</h1>
         </div>
     )
 }

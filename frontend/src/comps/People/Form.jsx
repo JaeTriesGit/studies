@@ -6,7 +6,8 @@ export default function Form({onSubmit}){
     
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('content')}placeholder='Enter Note'/>
+            <input {...register('name')}placeholder='Enter Name'/>
+            <input {...register('number')}placeholder='Enter Number'/>
             <button type='submit'>Submit</button>
         </form>
     )

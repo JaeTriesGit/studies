@@ -18,7 +18,6 @@ const Countries = () => {
     }, [])
 
     const ChangeHandler = (e) => {
-        console.log(countries)
         let Get = []
         const Search4 = e.target.value.toLowerCase()
         const Filter = countries.map(obj => {

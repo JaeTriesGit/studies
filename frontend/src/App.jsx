@@ -2,7 +2,11 @@ import { useState, useEffect} from 'react'
 
 //Pages
 import Notes from './pages/Notes'
+import People from './pages/People'
 import Countries from './pages/Countries'
+import Tests from './pages/Tests'
+import Blogs from './pages/Blogs'
+
 import Navbar from './comps/Navbar'
 import './App.css'
 
@@ -25,7 +29,15 @@ const App = () => {
       {
         page==='Countries' && <Countries/>
       }
-
+      {
+        page==='Tests' && <Tests/>
+      }
+      {
+        page==='People' && <People/>
+      }
+      {
+        page==='Blogs' && <Blogs/>
+      }
     </div>
   )
 }

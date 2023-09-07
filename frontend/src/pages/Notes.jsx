@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react'
-//npx json-server --port=5173 --watch db.json
+//npx json-server --port=5174 --watch db.json
 
 import Note from '../comps/Notes/Note'
 import Form from '../comps/Notes/Form'
@@ -41,28 +41,6 @@ const App = () => {
     })
   }
 
-  const ChangeHandler = (e) => {
-
-    const a = []
-
-    const Filtered = notes.filter((obj) => {
-      const str1 = e.target.value.toLowerCase()
-      const str2 = obj.name.toLowerCase()
-      const got = str2.search(str1)
-      if (got >= 0){
-        a.push(obj)
-      }
-    })
-    
-    if (a.length > 0 && e.target.value.length > 0){
-      setNotes(a)
-    } else {
-      Notes_Api.GetNotes().then(res=>{
-        setNotes(res)
-      })
-    }
-  }
-
   const NotesM = notes.map(note => 
     <Note 
       note={note} 
@@ -88,21 +66,16 @@ const App = () => {
           err={error}
         /> 
       }
-      <input onChange={ChangeHandler} 
-        placeholder='Search by Name'
-      />
 
       <button onClick={() => {
         setShow(!show)
-      }}>{show ? 'Hide' : 'Show'}</button>
+      }}>{show ? 'Hide Not Important' : 'Show Not Important'}</button>
 
       <Form 
         onSubmit={(e) => {
           
           const NObj = {
-            id: notes[notes.length-1].ID+1,
-            name: e.name,
-            number: e.number,
+            content: e.content,
             important: true
           }
 
