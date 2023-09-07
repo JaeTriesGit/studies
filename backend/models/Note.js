@@ -10,7 +10,8 @@ const Schema = new Mong.Schema({
     important:Boolean,
     user:{
         type:String,
-        required:true
+        required:true,
+        ref:'User'
     }
 })
 

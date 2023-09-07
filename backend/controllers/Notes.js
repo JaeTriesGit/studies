@@ -6,7 +6,7 @@ const User = require('../models/User')
 const GetToken = req => {
     const Authorize = req.get('authorization')
     if (Authorize && Authorize.startsWith('Bearer ')) {
-        return Authorize.replcae('Bearer ', '')
+        return Authorize.replace('Bearer ', '')
     }
 }
 
