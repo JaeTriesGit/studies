@@ -9,6 +9,12 @@ const userSchema = Mong.Schema({
             type: Mong.Schema.Types.ObjectId,
             ref:'Note'
         }
+    ],
+    blogposts: [
+        {
+            type: Mong.Schema.Types.ObjectId,
+            ref:'BlogPost'
+        }
     ]
 })
 

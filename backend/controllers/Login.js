@@ -4,13 +4,14 @@ const Router = require('express').Router()
 const User = require('../models/User')
 
 Router.post('/', async (req,res) => {
-    const {un,pw} = req.body//un=usrnme pw=pass oBVIOUSLYadaspdo0s
-    const user = await User.findOne({un})
-    const pwC = user === null ? false : await bc.compare(pw, user.passwordHash)
+    const username = req.body.username
+    const password = req.body.password
+    const user = await User.findOne({username:username})
+    const pwC = await bc.compare(password, user.passHash)
 
     if (!(user && pwC)) {
         return res.status(401).json({
-            error:'asd u forked up m8'
+            error:'asd u forked up m8'+username+password
         })
     }
 
@@ -30,6 +31,11 @@ Router.post('/', async (req,res) => {
         username: user.username, 
         name: user.name
     })
-}) 
+})
+
+Router.get('/', async(req,res)=>{
+    const Got = await User.find({})
+    res.json(Got)
+})
 
 module.exports = Router

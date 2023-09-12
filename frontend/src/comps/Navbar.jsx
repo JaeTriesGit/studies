@@ -1,11 +1,17 @@
-export default function Navbar({ChangePage}){
+export default function Navbar({ChangePage, userInfo, logOut}){
     return(
         <div className='Navbar'>
-            <button onClick={ChangePage}>Notes</button>
-            <button onClick={ChangePage}>People</button>
-            <button onClick={ChangePage}>Countries</button>
-            <button onClick={ChangePage}>Tests</button>
-            <button onClick={ChangePage}>Blogs</button>
+            <button className='NavbarCtrl' onClick={ChangePage}>Notes</button>
+            <button className='NavbarCtrl' onClick={ChangePage}>People</button>
+            <button className='NavbarCtrl' onClick={ChangePage}>Countries</button>
+            <button className='NavbarCtrl' onClick={ChangePage}>Tests</button>
+            <button className='NavbarCtrl' onClick={ChangePage}>Blogs</button>
+            {userInfo && 
+                <div className='UserControl'>
+                    <p>Logged in as: <span>{userInfo}</span></p>
+                    <button className='NavbarCtrl' onClick={logOut}>Log Out</button>
+                </div>
+            }
         </div>
     )
 }

@@ -1,4 +1,5 @@
 const Router = require('express').Router()
+const JWT = require('jsonwebtoken')
 const BlogPost = require('../models/BlogPost')
 
 //GET ALL BLOG POSTS

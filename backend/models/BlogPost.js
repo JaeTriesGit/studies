@@ -9,6 +9,19 @@ const Schema = new Mong.Schema({
         type:String,
         required:true
     },
+    user:{
+        username:{
+            type:String,
+            required:true
+        },
+        name:{
+            type:String,
+            required:true
+        },
+        id:{
+            type:String,
+        }
+    },
     url:{
         type:String,
         required:true

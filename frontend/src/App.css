@@ -10,42 +10,6 @@ Body{
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 span{
   color:rgb(82, 175, 82);
 }
@@ -130,4 +94,25 @@ span{
 .BlogPost{
   height:auto;
   width:300px;
+}
+
+.Navbar{
+  display:flex;
+  flex-direction:row;
+  align-content:center;
+  align-items:center;
+  height:50px;
+  gap:10px;
+}
+
+.UserControl{
+  background:none;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:10px;
+}
+
+.NavbarCtrl{
+  height:40px;
 }

@@ -12,6 +12,7 @@ const PeopleRouter = require('./controllers/People')
 const BlogRouter = require('./controllers/BlogPosts')
 const UsersRouter = require('./controllers/Users')
 const LoginRouter = require('./controllers/Login')
+const RegisterRouter = require('./controllers/Register')
 
 Mongoose.set('strictQuery', false)
 
@@ -38,5 +39,6 @@ APP.use('/api/people', PeopleRouter)
 APP.use('/api/blogs', BlogRouter)
 APP.use('/api/users', UsersRouter)
 APP.use('/api/login', LoginRouter)
+APP.use('/api/register', RegisterRouter)
 
 module.exports = APP
