@@ -12,7 +12,7 @@ Router.post('/', async (req,res) => {
 
     if (!pwC) {
         return res.status(401).json({
-            error:'asd u forked up m8'+username+password
+            error:'asd u forked up m8'
         })
     }
 

@@ -18,6 +18,15 @@ const App = () => {
   const [page, setPage] = useState('Login')
   const [user, setUser] = useState(window.localStorage.getItem('User') || null)
 
+  useEffect(()=>{
+    const User = window.localStorage.getItem('User')
+    if (User) {
+      const usr = JSON.parse(User)
+      setUser(usr)
+      noteService.setToken(usr.T0ken)
+    }
+  },[])
+
   return (
     <div className='Main'>
 

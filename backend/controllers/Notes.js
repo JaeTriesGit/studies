@@ -31,7 +31,6 @@ Router.get('/:_id', (req,res, next) => {
 //POST A NOTE
 Router.post('/', async (req,res)=>{
     const Body = req.body
-
     const Decoded = JWT.verify(GetToken(req), process.env.SECRET)
 
     if (!Decoded.id) {
