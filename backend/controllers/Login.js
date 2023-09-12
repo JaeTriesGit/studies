@@ -7,9 +7,10 @@ Router.post('/', async (req,res) => {
     const username = req.body.username
     const password = req.body.password
     const user = await User.findOne({username:username})
+    if (!user || !user.passHash) return res.status(401).json({error:'nah'})
     const pwC = await bc.compare(password, user.passHash)
 
-    if (!(user && pwC)) {
+    if (!pwC) {
         return res.status(401).json({
             error:'asd u forked up m8'+username+password
         })

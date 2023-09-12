@@ -15,7 +15,7 @@ import './App.css'
 
 const App = () => {
 
-  const [page, setPage] = useState('Notes')
+  const [page, setPage] = useState('Login')
   const [user, setUser] = useState(window.localStorage.getItem('User') || null)
 
   return (
@@ -32,6 +32,7 @@ const App = () => {
           logOut={()=>{
             window.localStorage.removeItem('User')
             setUser(null)
+            setPage('Login')
           }}
         />
         :
